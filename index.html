@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Dev Toolkit — 5-in-1 Developer Automation Suite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0a0a0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 14px;
+            color: #a5b4fc;
+            margin-bottom: 24px;
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #9ca3af;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-section {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #a5b4fc;
+            border: 1px solid rgba(99, 102, 241, 0.5);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: #a5b4fc;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 60px;
+            font-size: 18px;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .tool-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+        
+        .tool-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            background: rgba(99, 102, 241, 0.05);
+            transform: translateY(-4px);
+        }
+        
+        .tool-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+        
+        .tool-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .tool-desc {
+            color: #9ca3af;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .tool-features {
+            list-style: none;
+        }
+        
+        .tool-features li {
+            font-size: 13px;
+            color: #6b7280;
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .tool-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .pricing-section {
+            background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            border-color: rgba(99, 102, 241, 0.5);
+            background: rgba(99, 102, 241, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .pricing-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        
+        .pricing-price span {
+            font-size: 18px;
+            color: #6b7280;
+            font-weight: 400;
+        }
+        
+        .pricing-desc {
+            color: #9ca3af;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+        
+        .pricing-features li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 14px;
+            color: #d1d5db;
+        }
+        
+        .pricing-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .wallet-section {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .wallet-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        
+        .wallet-address {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            word-break: break-all;
+            margin-bottom: 16px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            cursor: pointer;
+            user-select: all;
+        }
+        
+        .wallet-label {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+        
+        .faq-section {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            padding: 24px;
+        }
+        
+        .faq-q {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .faq-a {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .social-links a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #a5b4fc;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 32px; }
+            .subtitle { font-size: 16px; }
+            .section-title { font-size: 28px; }
+            .pricing-card.featured { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="badge">⚡ Powered by Trae AI</div>
+            <h1>AI Dev Toolkit</h1>
+            <p class="subtitle">5 production-ready tools that save you hours of work every week. Built for developers, hackers, and makers.</p>
+            <div class="cta-section">
+                <a href="#pricing" class="btn btn-primary">Get Instant Access — $19+</a>
+                <a href="#tools" class="btn btn-secondary">See All Tools</a>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Premium Tools</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Python / Open Source</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">API Keys Required</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="tools">
+        <div class="container">
+            <h2 class="section-title">Everything You Need</h2>
+            <p class="section-subtitle">Five battle-tested tools in one package. Ready to run, easy to customize.</p>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🕷️</div>
+                    <div class="tool-name">Web Scraper Pro</div>
+                    <div class="tool-desc">Smart data extraction with anti-detection</div>
+                    <ul class="tool-features">
+                        <li>Multi-threaded scraping</li>
+                        <li>Proxy rotation support</li>
+                        <li>User-agent randomization</li>
+                        <li>CSV / JSON / Excel output</li>
+                        <li>Auto-retry with backoff</li>
+                    </ul>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <div class="tool-name">Excel Batch Processor</div>
+                    <div class="tool-desc">Process hundreds of files in seconds</div>
+                    <ul class="tool-features">
+                        <li>Merge multiple files</li>
+                        <li>Remove duplicates</li>
+                        <li>Data cleaning & filtering</li>
+                        <li>Pivot table generation</li>
+                        <li>Web UI included</li>
+                    </ul>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">🔍</div>
+                    <div class="tool-name">GitHub Security Analyzer</div>
+                    <div class="tool-desc">Find vulnerabilities in any repo</div>
+                    <ul class="tool-features">
+                        <li>Hardcoded secrets detection</li>
+                        <li>SQL injection patterns</li>
+                        <li>XSS vulnerability scan</li>
+                        <li>Dependency checking</li>
+                        <li>HTML report dashboard</li>
+                    </ul>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">🤖</div>
+                    <div class="tool-name">Telegram Business Bot</div>
+                    <div class="tool-desc">Ready-to-use bot template for business</div>
+                    <ul class="tool-features">
+                        <li>FAQ auto-reply</li>
+                        <li>Broadcast messages</li>
+                        <li>User management</li>
+                        <li>Admin panel</li>
+                        <li>Payment integration</li>
+                    </ul>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">💰</div>
+                    <div class="tool-name">Income Tracker Dashboard</div>
+                    <div class="tool-desc">Track all income streams in one place</div>
+                    <ul class="tool-features">
+                        <li>Multi-platform support</li>
+                        <li>Crypto + fiat tracking</li>
+                        <li>Currency conversion</li>
+                        <li>Monthly/weekly reports</li>
+                        <li>Goal tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Pay What You Want</h2>
+            <p class="section-subtitle">Starting at $19. If these tools save you time, pay what they're worth.</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">Basic</div>
+                    <div class="pricing-price">$19<span>+</span></div>
+                    <div class="pricing-desc">All 5 tools + lifetime updates</div>
+                    <ul class="pricing-features">
+                        <li>All 5 premium tools</li>
+                        <li>Lifetime updates</li>
+                        <li>Full source code</li>
+                        <li>Documentation</li>
+                        <li>Email support (7 days)</li>
+                    </ul>
+                    <button class="btn btn-primary" style="width: 100%;">Get Basic</button>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">MOST POPULAR</div>
+                    <div class="pricing-name">Pro</div>
+                    <div class="pricing-price">$49<span>+</span></div>
+                    <div class="pricing-desc">Tools + 1 hour AI consulting</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Basic</li>
+                        <li>1 hour AI consulting</li>
+                        <li>Customization help</li>
+                        <li>Priority support</li>
+                        <li>Bonus: 3 extra scripts</li>
+                    </ul>
+                    <button class="btn btn-primary" style="width: 100%;">Get Pro</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-name">Premium</div>
+                    <div class="pricing-price">$99<span>+</span></div>
+                    <div class="pricing-desc">Tools + custom script built for you</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Pro</li>
+                        <li>3 hours consulting</li>
+                        <li>1 custom script</li>
+                        <li>30 days support</li>
+                        <li>Future tools included</li>
+                    </ul>
+                    <button class="btn btn-primary" style="width: 100%;">Get Premium</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="wallet-section">
+                <div class="wallet-title">📨 Send Payment & Get Instant Access</div>
+                <p style="color: #9ca3af; margin-bottom: 32px; font-size: 14px;">Send any amount ($19+) to the address below. Then open a GitHub issue with your tx hash to get access.</p>
+                
+                <div class="wallet-label">USDT (TRC20) / ETH (ERC20) / BSC (BEP20)</div>
+                <div class="wallet-address" onclick="copyAddress(this)" title="Click to copy">
+                    0x7B8401b5B4ee319aa47DC5F12b869e5Be460A9B2
+                </div>
+                
+                <div style="margin-top: 24px;">
+                    <a href="https://github.com/AfaAgent/ai-dev-toolkit/issues/new" class="btn btn-secondary" target="_blank">
+                        Open GitHub Issue for Access →
+                    </a>
+                </div>
+                
+                <p style="margin-top: 24px; font-size: 12px; color: #6b7280;">
+                    Prefer another payment method? Contact: afaagent.me@gmail.com
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">FAQ</h2>
+            <p class="section-subtitle">Got questions? We've got answers.</p>
+            
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-q">How do I get the tools after payment?</div>
+                    <div class="faq-a">Open a GitHub issue with your transaction hash, and we'll send you the full download link within 24 hours (usually much faster).</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-q">What if I can't afford $19?</div>
+                    <div class="faq-a">No problem. The tools are open source and available in the repo. If they help you later, come back and pay what you can.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-q">Do I need API keys?</div>
+                    <div class="faq-a">No. All tools work out of the box with no paid dependencies. Some advanced features (like large-scale scraping) may benefit from proxy services, but they're optional.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-q">What's the refund policy?</div>
+                    <div class="faq-a">Since this is a digital product with open source code, all sales are final. But if you're not satisfied, reach out and we'll make it right.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-q">Can I use these tools for client work?</div>
+                    <div class="faq-a">Absolutely. Use them for personal projects, client work, anything. Just don't resell them as your own.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/AfaAgent" target="_blank">GitHub</a>
+                <a href="https://twitter.com/AfaAgent" target="_blank">Twitter/X</a>
+                <a href="https://t.me/AfaAgent" target="_blank">Telegram</a>
+                <a href="mailto:afaagent.me@gmail.com">Email</a>
+            </div>
+            <p>Built with Trae AI · © 2026 AI Dev Toolkit</p>
+            <p style="margin-top: 8px; font-size: 12px;">For legitimate use only. Users are responsible for complying with applicable laws.</p>
+        </div>
+    </footer>
+
+    <script>
+        function copyAddress(element) {
+            const text = element.textContent.trim();
+            navigator.clipboard.writeText(text).then(() => {
+                const original = element.style.background;
+                element.style.background = 'rgba(16, 185, 129, 0.2)';
+                element.style.borderColor = 'rgba(16, 185, 129, 0.5)';
+                setTimeout(() => {
+                    element.style.background = original;
+                    element.style.borderColor = 'rgba(99, 102, 241, 0.2)';
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+</html>
